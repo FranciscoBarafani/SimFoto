@@ -1,91 +1,95 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>FotoSim</title>
-    <meta charset="utf-8" />
+  <meta charset="utf-8">
+  <title>FotoSim</title>
+  <meta charset="utf-8" />
 
-    <!--Responsive to device size-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap library -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <!-- JavaScript library -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Propper Style Sheet-->
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <!-- AngularJS  -->
-    <script src="js/angular.min.js"></script>
-    <!-- App Script (Angular controllers) -->
-    <script src="js/app.js" type="text/javascript"></script>
+  <!--Responsive to device size-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap library -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <!-- JavaScript library -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- Propper Style Sheet-->
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <!-- AngularJS  -->
+  <script src="js/angular.min.js"></script>
+  <!-- App Script (Angular controllers) -->
+  <script src="js/app.js" type="text/javascript"></script>
 
-    <!-- CamanJS (JavaScript Photo Editor) -->
-    <script src="js/caman.full.min.js"></script>
+  <!-- CamanJS (JavaScript Photo Editor) -->
+  <script src="js/caman.full.min.js"></script>
 </head>
-<body>
-    <div class="container-fluid">
-        <!-- MENU -->
+<body style="background-color: rgb(62, 62, 62)">
+  <div class="container-fluid">
+    <!-- SLIDERS/CAMARA -->
+    <div class="row">
+      <div class="col-2">
+      </div>
+      <div class="col-8">
+        <br />
         <div class="row">
-            <div class="col-8 offset-2">
-
+          <div class="col-9">
+            <div class="row">
+              <div class="preview-wrapper">
+                <canvas id="canvas" style="border-radius:15px"></canvas>
+              </div>
             </div>
-        </div>
-        <!-- SLIDERS/CAMARA -->
-        <div class="row">
-            <div class="col-8 offset-2" style="background-image: url(images/Fondo-Camara.jpg); border-radius: 15px">
-                <br />
-                <div class="preview-wrapper">
-                    <canvas id="canvas"  style="border-radius:15px"></canvas>
+            <div class="row">
+              <div class="col-9">
+                <div class="filter-buttons" style="background-color: black; border-radius: 15px">
+                  <div class="filter-group">
+                    <button id="brightness-dec">-</button>
+                    <span class="filter-name">Brillo</span>
+                    <button id="brightness-inc">+</button>
+                  </div>
+                  <div class="filter-group">
+                    <button id="contrast-dec">-</button>
+                    <span class="filter-name">Contraste</span>
+                    <button id="contrast-inc">+</button>
+                  </div>
+                  <div class="filter-group">
+                    <button id="saturation-dec">-</button>
+                    <span class="filter-name">Saturacion</span>
+                    <button id="saturation-inc">+</button>
+                  </div>
+                  <div class="filter-group">
+                    <button id="exposure-dec">-</button>
+                    <span class="filter-name">Exposicion</span>
+                    <button id="exposure-inc">+</button>
+                  </div>
+                  <div class="filter-group">
+                    <button id="noise-dec" class="disabled">-</button>
+                    <span class="filter-name">Ruido</span>
+                    <button id="noise-inc">+</button>
+                  </div>
+                  <div class="filter-group">
+                    <button id="blur-dec" class="disabled">-</button>
+                    <span class="filter-name">Difuminacion</span>
+                    <button id="blur-inc">+</button>
+                  </div>
                 </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="filter-buttons" style="background-color: black; border-radius: 15px">
-                            <div class="filter-group">
-                                <button id="brightness-dec">-</button>
-                                <span class="filter-name">Brillo</span>
-                                <button id="brightness-inc">+</button>
-                            </div>
-                            <div class="filter-group">
-                                <button id="contrast-dec">-</button>
-                                <span class="filter-name">Contraste</span>
-                                <button id="contrast-inc">+</button>
-                            </div>
-                            <div class="filter-group">
-                                <button id="saturation-dec">-</button>
-                                <span class="filter-name">Saturacion</span>
-                                <button id="saturation-inc">+</button>
-                            </div>
-                            <br />
-                            <div class="filter-group">
-                                <button id="exposure-dec">-</button>
-                                <span class="filter-name">Exposicion</span>
-                                <button id="exposure-inc">+</button>
-                            </div>
-                            <div class="filter-group">
-                                <button id="noise-dec" class="disabled">-</button>
-                                <span class="filter-name">Ruido</span>
-                                <button id="noise-inc">+</button>
-                            </div>
-                            <div class="filter-group">
-                                <button id="blur-dec" class="disabled">-</button>
-                                <span class="filter-name">Difuminacion</span>
-                                <button id="blur-inc">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="editor-buttons">
-                    <input type="file" id="upload-file" placeholder="Subir una Foto" />
-                    <label for="upload-file">Subir una Foto</label>
-                    <button id="download-btn">Descargar Foto</button>
-                </div>
+              </div>
             </div>
+            
+          </div>
+          <div class="col-3">
+            <div class="editor-buttons">
+              <input type="file" id="upload-file" placeholder="Subir una Foto" />
+              <label for="upload-file">Subir una Foto</label>
+              <button id="download-btn">Descargar Foto</button>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    <!-- Script de Filtros -->
-    <script src="js/filter.js"></script>
+  </div>
+  <!-- Script de Filtros -->
+  <script src="js/filter.js"></script>
 </body>
 </html>

@@ -76,6 +76,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\style.css" />
     <Content Include="images\camara.png" />
+    <Content Include="images\camara_modo.jpg" />
     <Content Include="images\Fondo-Camara.jpg" />
     <Content Include="index.html" />
     <Content Include="js\angular.min.js" />
