@@ -1,0 +1,57 @@
+<div class="col-8"  style="background-image: url(images/darkLeather.png) ; border-radius:15px ; margin-top: 25px">
+    <br />
+    <div class="row">
+      <div class="col">
+          <!-- Canvas -->
+          <div class="row">
+            <div class="preview-wrapper">
+              <canvas id="canvas" style="border-radius:15px"></canvas>
+            </div>
+            <!-- Dashboard Camara -->
+            <div class="col">
+              <div class="editor-buttons">
+                <input type="file" id="upload-file" placeholder="Subir una Foto" />
+                <label for="upload-file" style="background-image: url(images/boton.png); background-color: transparent; width: 200px; height: 197px"></label>
+              </div>
+            </div>
+          </div>
+          <!-- Filtros -->
+          <div class="row" style="margin-bottom:15px">
+            <div class="col">
+              <div class="filter-buttons" style="background-color: darkgray; border-radius: 15px">
+                <div class="filter-group">
+                  <button id="brightness-dec">-</button>
+                  <span class="filter-name">Brillo</span>
+                  <button id="brightness-inc">+</button>
+                </div>
+                <div class="filter-group">
+                  <button id="contrast-dec">-</button>
+                  <span class="filter-name">Contraste</span>
+                  <button id="contrast-inc">+</button>
+                </div>
+                <div class="filter-group">
+                  <button id="saturation-dec">-</button>
+                  <span class="filter-name">Saturacion</span>
+                  <button id="saturation-inc">+</button>
+                </div>
+                <div class="filter-group">
+                  <button id="exposure-dec">-</button>
+                  <span class="filter-name">Exposicion</span>
+                  <button id="exposure-inc">+</button>
+                </div>
+                <div class="filter-group">
+                  <button id="noise-dec" class="disabled">-</button>
+                  <span class="filter-name">Ruido</span>
+                  <button id="noise-inc">+</button>
+                </div>
+                <div class="filter-group">
+                  <button id="blur-dec" class="disabled">-</button>
+                  <span class="filter-name">Difuminacion</span>
+                  <button id="blur-inc">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
