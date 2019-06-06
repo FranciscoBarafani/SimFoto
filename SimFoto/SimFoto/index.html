@@ -23,12 +23,11 @@
   <script src="js/angular-route.min.js"></script>
   <!-- App Script (Angular controllers) -->
   <script src="js/app.js" type="text/javascript"></script>
-  
-
   <!-- CamanJS (JavaScript Photo Editor) -->
   <script src="js/caman.full.min.js"></script>
 </head>
-<body ng-app='myApp' ng-controller='index'>
+
+<body ng-app='myApp'>
   <!-- A grey horizontal navbar that becomes vertical on small screens -->
   <nav class="navbar navbar-expand-sm bg-dark">
 
@@ -47,7 +46,7 @@
         <!-- Nav pills -->
         <ul class="nav nav-pills flex-column" style="margin-top:30px ">
           <li class="nav-item">
-            <a class="nav-link active" data-toggle="pill" href="#index">INICIO</a>
+            <a class="nav-link active" data-toggle="pill" href="#inicio">INICIO</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="pill" href="#ejercicios">EJERCICIOS</a>
@@ -56,9 +55,10 @@
             <a class="nav-link" data-toggle="pill" href="#modolibre">MODO LIBRE</a>
           </li>
         </ul>
-      </div>
-        <div ng-view></div>
-      
+      </div>  
+      <div class="col-10">   
+      <div ng-view></div> 
+    </div>  
     </div>
       </div>
     </div>

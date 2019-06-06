@@ -1,10 +1,15 @@
-﻿myApp = angular.module('myApp', ['ngRoute']);
+﻿var myApp = angular.module('myApp', ['ngRoute']);
 myApp.config(['$locationProvider', function ($locationProvider) {
     $locationProvider.hashPrefix('');
   }]);
 //ROUTE PROVIDER
 myApp.config(function($routeProvider) {
 $routeProvider
+
+.when('/', {
+  templateUrl : '/inicio.html',
+  controller : 'inicio'
+  })
 
 .when('/ejercicios', {
 templateUrl : '/ejercicios.html',
@@ -20,15 +25,19 @@ controller : 'modolibre'
 });
 
 //CONTROLLERS
-app.controller('index', function($scope) {
+myApp.controller('index', function($scope) {
+    $scope.message = 'Hello from FirstController';
+    });
+
+myApp.controller('inicio', function($scope) {
     $scope.message = 'Hello from FirstController';
     });
     
-    app.controller('ejercicios', function($scope) {
-    $scope.message = 'Hello from SecondController';
-    });
-    
-    app.controller('modolibre', function($scope) {
-    $scope.message = 'Hello from ThirdController';
-    });
+myApp.controller('ejercicios', function($scope) {
+  $scope.message = 'Hello from SecondController';
+      });
+      
+myApp.controller('modolibre', function($scope) {
+  $scope.message = 'Hello from ThirdController';
+      });
     
