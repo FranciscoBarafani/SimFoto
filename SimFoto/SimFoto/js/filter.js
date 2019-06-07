@@ -190,6 +190,7 @@ $(document).ready(function () {
     });
 });
 
+//Download Function 
 function download(canvas, filename) {
     var e;
     var lnk = document.createElement("a");
@@ -221,4 +222,9 @@ function download(canvas, filename) {
     } else if (lnk.fireEvent) {
         lnk.fireEvent("onclick");
     }
-}
+} ;
+//This function resets the image to its original state 
+function reset(){
+    Caman("#canvas", img, function () {
+        this.revert();
+})}; 

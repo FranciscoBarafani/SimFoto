@@ -7,18 +7,28 @@
             <div class="preview-wrapper">
               <canvas id="canvas" style="border-radius:15px"></canvas>
             </div>
-            <!-- Dashboard Camara -->
-            
-              <div class="editor-buttons">
-                <input type="file" id="upload-file" placeholder="Subir una Foto" />
-                <label for="upload-file" style="background-image: url(images/boton.png); background-color: transparent; width: 200px; height: 197px"></label>
+            <!-- Dashboard Camara -->            
+              <div class="editor-buttons" style="margin-left: 40px">
+                <div class="row">
+                  <input type="file" id="upload-file" placeholder="Subir una Foto" />
+                  <label for="upload-file" style="background-image: url(images/boton.png); background-color: transparent; width: 200px; height: 197px"></label>
+                </div>
+                <div class="row">
+                  <button class="btn btn-primary" onclick="reset()"></button>
+                  <button class="btn btn-primary" id="download-btn">Descargar</button>
+                  </div>
+                  
+                </div>    
+                <div class="row">
+                    
+                </div>             
               </div>
-          
+              
           </div>
           <!-- Filtros -->
-          <div class="row" style="margin-bottom:15px">
-            <div class="col">
-              <div class="filter-buttons" style="background-color: darkgray; border-radius: 15px">
+          <div class="row" style="margin-bottom:15px; margin-left: 5px">
+            <div class="col-9">
+              <div class="filter-buttons" style="background-color: white; border-radius: 15px">
                 <div class="filter-group">
                   <button id="brightness-dec">-</button>
                   <span class="filter-name">Brillo</span>

@@ -1,9 +1,9 @@
 ﻿
 .filter-name {
-    background: #795548;
+    background: darkgray;
     padding: 2px;
     display: inline-block;
-    color: white;
+    color:white;
     width: 100px;
     border-radius: 3px;
     text-align: center;
@@ -18,11 +18,11 @@
 canvas {
     margin-left: 15px;
     margin-bottom: 40px;
-    background: #ececec;
+    background: black;
     width: 600px;
     max-width: 100%;
-    border-color: black;
-    border-width: 10px;
+    border-color:darkgray;
+    border-width: 30px;
 }
 
 .filter-buttons button,
@@ -38,14 +38,14 @@ canvas {
 }
 
     .filter-buttons button.disabled {
-        background: #aaa;
+        background: lightblue;
     }
 
 .filter-buttons button {
     padding: 2px 10px;
     margin: 0;
     cursor: pointer;
-    background: #ff5722;
+    background: #1E90FF;
 }
 
 .editor-buttons #reset-btn {
@@ -57,7 +57,7 @@ canvas {
 }
 
 .editor-buttons button:hover {
-    background: #795548;
+    background: black;
     cursor: pointer;
 }
 
