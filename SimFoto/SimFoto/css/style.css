@@ -48,9 +48,10 @@ canvas {
     background: #1E90FF;
 }
 
-.editor-buttons #reset-btn {
+.editor-buttons #resetear-btn {
     background: #f44336;
 }
+
 
 .editor-buttons #download-btn {
     background: #009688;

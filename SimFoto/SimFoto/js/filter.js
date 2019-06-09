@@ -1,6 +1,4 @@
-﻿
-
-var img = new Image();
+﻿var img = new Image();
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var fileName = "";
@@ -108,54 +106,6 @@ $(document).ready(function () {
         });
     });
 
-    $("#vintage-btn").on("click", function (e) {
-        Caman("#canvas", img, function () {
-            this.vintage().render();
-        });
-    });
-
-    $("#lomo-btn").on("click", function (e) {
-        Caman("#canvas", img, function () {
-            this.lomo().render();
-        });
-    });
-
-    $("#calrity-btn").on("click", function (e) {
-        Caman("#canvas", img, function () {
-            this.clarity().render();
-        });
-    });
-
-    $("#sincity-btn").on("click", function (e) {
-        Caman("#canvas", img, function () {
-            this.sinCity().render();
-        });
-    });
-
-    $("#crossprocess-btn").on("click", function (e) {
-        Caman("#canvas", img, function () {
-            this.crossProcess().render();
-        });
-    });
-
-    $("#pinhole-btn").on("click", function (e) {
-        Caman("#canvas", img, function () {
-            this.pinhole().render();
-        });
-    });
-
-    $("#nostalgia-btn").on("click", function (e) {
-        Caman("#canvas", img, function () {
-            this.nostalgia().render();
-        });
-    });
-
-    $("#majestic-btn").on("click", function (e) {
-        Caman("#canvas", img, function () {
-            this.herMajesty().render();
-        });
-    });
-
     $("#download-btn").on("click", function (e) {
         var fileExtension = fileName.slice(-4);
         if (fileExtension == ".jpg" || fileExtension == ".png") {
@@ -222,9 +172,10 @@ function download(canvas, filename) {
     } else if (lnk.fireEvent) {
         lnk.fireEvent("onclick");
     }
-} ;
+};
 //This function resets the image to its original state 
-function reset(){
+function reset() {
     Caman("#canvas", img, function () {
         this.revert();
-})}; 
+    })
+}; 
