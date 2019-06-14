@@ -1,0 +1,79 @@
+
+<div class="col-10" style="background-image: url(images/darkLeather.png) ; border-radius:15px ; margin-top: 25px">
+  <br />
+  <!-- Canvas Ejercicio1 -->
+  <div class="row">
+    <div class="preview-wrapper">
+      <canvas id="canvasejercicio" style="border-radius:15px"></canvas>
+      <button class="btn btn-primary" onclick="prepararejercicio()">Preparar Ejercicio</button>
+    </div>
+    </div>
+  <div class="row">
+    <!-- Canvas -->
+    <div class="col">
+      <div class="row">
+        <div class="preview-wrapper">
+          <canvas id="canvas" style="border-radius:15px"></canvas>
+        </div>
+        <!-- Dashboard Camara -->
+        <div class="editor-buttons" style="margin-left: 40px">
+          <div class="row">
+            <input type="file" id="upload-file" placeholder="Subir una Foto" />
+            <label for="upload-file"
+              style="background-image: url(images/boton.png); background-color: transparent; width: 200px; height: 197px"></label>
+          </div>
+          <div class="row">
+            <button class="btn btn-primary" id="resetear-btn" onclick="reset()">Resetear</button>
+            <button class="btn btn-primary" id="download-btn">Descargar</button>
+          </div>
+
+        </div>
+        <div class="row">
+
+        </div>
+      </div>
+
+    </div>
+    <!-- Filtros -->
+    <div class="row" style="margin-bottom:15px; margin-left: 5px">
+      <div class="col-9">
+        <div class="filter-buttons" style="background-color: white; border-radius: 15px">
+          <div class="filter-group">
+            <button id="brightness-dec">-</button>
+            <span class="filter-name">Brillo</span>
+            <button id="brightness-inc">+</button>
+          </div>
+          <div class="filter-group">
+            <button id="contrast-dec">-</button>
+            <span class="filter-name">Contraste</span>
+            <button id="contrast-inc">+</button>
+          </div>
+          <div class="filter-group">
+            <button id="saturation-dec">-</button>
+            <span class="filter-name">Saturacion</span>
+            <button id="saturation-inc">+</button>
+          </div>
+          <div class="filter-group">
+            <button id="exposure-dec">-</button>
+            <span class="filter-name">Exposicion</span>
+            <button id="exposure-inc">+</button>
+          </div>
+          <div class="filter-group">
+            <button id="noise-dec" class="disabled">-</button>
+            <span class="filter-name">Ruido</span>
+            <button id="noise-inc">+</button>
+          </div>
+          <div class="filter-group">
+            <button id="blur-dec" class="disabled">-</button>
+            <span class="filter-name">Difuminacion</span>
+            <button id="blur-inc">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- Script de Filtros -->
+<script src="js/ejercicio1.js"></script>
