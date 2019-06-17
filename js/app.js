@@ -11,8 +11,8 @@ $routeProvider
   controller : 'inicio'
   })
 
-.when('/ejercicios', {
-templateUrl : '/ejercicios.html',
+.when('/ejercicio', {
+templateUrl : '/ejercicio1.html',
 controller : 'ejercicios'
 })
 
