@@ -22,6 +22,8 @@ var saturacion = 0;
 var exposicion = 0;
 var ruido = 0;
 var difuminacion = 0; 
+//Ejercicio Elegido , para creacion y correcion
+var elegido = [];
 
 $(document).ready(function () {
     $("#brightness-inc").on("click", function (e) {
@@ -144,19 +146,57 @@ $(document).ready(function () {
                 };              
                 imgejercicio.onload = function (){
                   canvasejercicio.width = imgejercicio.width;
-                  canvasejercicio.heigth = imgejercicio.height; 
+                  canvasejercicio.heigth = 800; 
                   ctxejercicio.drawImage(img, 0, 0, imgejercicio.width, imgejercicio.height);
                   $("#canvasejercicio").removeAttr("data-caman-id");
-                  prepararejercicio();
                 }
             },
             false
         );
     });
 });
-
+//Set de Ejercicios Definidos 
+var ejercicio1 = [10,30,10,-10,0,0];
+var ejercicio2 = [-20,20,20,30,0,0];
+var ejercicio3 = [-10,10,-50,0,0,0];
+//Set Exercise Function // Aplicar 
+function prepararejercicio(numero){
+    brillo = 0;
+    contraste = 0;
+    saturacion = 0;
+    exposicion = 0;
+    ruido = 0;
+    difuminacion = 0; 
+    if (numero == 1)
+    {
+    elegido = ejercicio1;
+    }
+    else if (numero == 2)
+    {
+    elegido = ejercicio2;
+    }
+    else
+    {
+    elegido = ejercicio3; 
+    }
+    Caman("#canvasejercicio", imgejercicio ,  function () {
+    this.brightness(elegido[0]);
+        this.contrast(elegido[1]);
+        this.saturation(elegido[2]);    
+        this.exposure(elegido[3]);
+        this.noise(elegido[4]);
+        this.stackBlur(elegido[5]);   
+        this.render();
+    });
+}
 //Set Exercise Function // Aplicar Random
-function prepararejercicio() {
+function prepararejerciciorandom() {
+    brillo = 0;
+    contraste = 0;
+    saturacion = 0;
+    exposicion = 0;
+    ruido = 0;
+    difuminacion = 0; 
     var valores = [-40,-30,-20,-10,0,10,20,30,40];
     var valoresespeciales = [0,0,0,0,0,10,0,0,0,0,0];
     brilloejercicio = valores[Math.floor(Math.random()*(valores.length))];
@@ -165,7 +205,6 @@ function prepararejercicio() {
     exposicionejercicio = valores[Math.floor(Math.random()*(valores.length))];
     ruidoejercicio = valoresespeciales[Math.floor(Math.random()*(valores.length))];
     difuminacionejercicio = valoresespeciales[Math.floor(Math.random()*(valores.length))];
-    alert([contrasteejercicio, saturacionejercicio])
     Caman("#canvasejercicio", imgejercicio ,  function () {
         this.brightness(brilloejercicio);
         this.contrast(contrasteejercicio);
@@ -176,6 +215,42 @@ function prepararejercicio() {
         this.render();
 
     });
+};
+//Corroborador de Ejercicio
+function corroborarejercicio(){
+    if (elegido[0] == brillo && elegido[1] == contraste && elegido[2] == saturacion && elegido[3] == exposicion && elegido[4] == ruido && elegido[5] == difuminacion ) 
+    alert("Ejercicio Correcto!!")
+};
+//Correctores 
+function correctorbrillo(){
+    if (elegido[0] == brillo){
+        alert("Brillo correcto! Ahora contraste");
+    }
+};
+function correctorcontraste(){
+    if (elegido[1] == contraste){
+        alert("Contraste correcto! Ahora saturacion");
+    }
+};
+function correctorsaturacion(){
+    if (elegido[2] == saturacion){
+        alert("Saturacion correcta! Ahora Exposicion");
+    }
+};
+function correctorexposicion(){
+    if (elegido[3] == exposicion){
+        alert("Exposicion correcta! Ahora ruido");
+    }
+};
+function correctorruido(){
+    if (elegido[4] == ruido){
+        alert("Ruido correcto! Ahora difuminacion");
+    }
+};
+function correctodifuminacion(){
+    if (elegido[5] == difuminacion){
+        alert("Difuminacion correcta! Ahora corrobora el ejercicio!");
+    }
 };
 //Download Function 
 function download(canvas, filename) {
@@ -215,4 +290,10 @@ function reset() {
     Caman("#canvas", img, function () {
         this.revert();
     })
+    brillo = 0;
+    contraste = 0;
+    saturacion = 0;
+    exposicion = 0;
+    ruido = 0;
+    difuminacion = 0; 
 }; 

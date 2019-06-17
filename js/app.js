@@ -21,23 +21,25 @@ templateUrl : '/modolibre.html',
 controller : 'modolibre'
 })
 
+.when('/teorico', {
+  templateUrl : '/teorico.html',
+  controller : 'teorico'
+  })
+
+
 .otherwise({redirectTo: '/'});
 });
 
 //CONTROLLERS
 myApp.controller('index', function($scope) {
-    $scope.message = 'Hello from FirstController';
     });
-
 myApp.controller('inicio', function($scope) {
-    $scope.message = 'Hello from FirstController';
-    });
-    
+    });   
 myApp.controller('ejercicios', function($scope) {
-  $scope.message = 'Hello from SecondController';
-      });
-      
+      });     
 myApp.controller('modolibre', function($scope) {
-  $scope.message = 'Hello from ThirdController';
       });
+myApp.controller('teorico', function($scope) {
+            });
+
     
