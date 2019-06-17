@@ -3,47 +3,66 @@ var imgejercicio = new Image();
 var canvasejercicio = document.getElementById("canvasejercicio");
 var ctxejercicio = canvasejercicio.getContext("2d");
 var fileNameejercicio = ""; 
-
+//Valores Imagen Ejercicio
+var brilloejercicio = 0;
+var contrasteejercicio = 0;
+var saturacionejercicio = 0;
+var exposicionejercicio = 0;
+var ruidoejercicio = 0;
+var difuminacionejercicio = 0; 
 //Dashboard / Imagen Usuario 
 var img = new Image();
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var fileName = "";
+//Valores Imagen Usuario 
+var brillo = 0;
+var contraste = 0;
+var saturacion = 0;
+var exposicion = 0;
+var ruido = 0;
+var difuminacion = 0; 
 
 $(document).ready(function () {
     $("#brightness-inc").on("click", function (e) {
         Caman("#canvas", img, function () {
             this.brightness(10).render();
+            brillo += 10;
         });
     });
 
     $("#brightness-dec").on("click", function (e) {
         Caman("#canvas", img, function () {
             this.brightness(-10).render();
+            brillo -= 10;
         });
     });
 
     $("#contrast-inc").on("click", function (e) {
         Caman("#canvas", img, function () {
             this.contrast(10).render();
+            contraste += 10;
         });
     });
 
     $("#contrast-dec").on("click", function (e) {
         Caman("#canvas", img, function () {
             this.contrast(-10).render();
+            contraste -= 10;
         });
     });
 
     $("#saturation-inc").on("click", function (e) {
         Caman("#canvas", img, function () {
             this.saturation(10).render();
+            saturacion += 10;
         });
     });
 
     $("#saturation-dec").on("click", function (e) {
         Caman("#canvas", img, function () {
             this.saturation(-10).render();
+            saturacion -= 10;
         });
     });
 
@@ -62,18 +81,21 @@ $(document).ready(function () {
     $("#exposure-inc").on("click", function (e) {
         Caman("#canvas", img, function () {
             this.exposure(10).render();
+            exposicion += 10;
         });
     });
 
     $("#exposure-dec").on("click", function (e) {
         Caman("#canvas", img, function () {
             this.exposure(-10).render();
+            exposicion -= 10;
         });
     });
 
     $("#noise-inc").on("click", function (e) {
         Caman("#canvas", img, function () {
             this.noise(10).render();
+            ruido += 10;
         });
     });
 
@@ -83,36 +105,13 @@ $(document).ready(function () {
         });
     });
 
-    $("#sepia-inc").on("click", function (e) {
-        Caman("#canvas", img, function () {
-            this.sepia(20).render();
-        });
-    });
-
-    $("#hue-inc").on("click", function (e) {
-        Caman("#canvas", img, function () {
-            this.hue(10).render();
-        });
-    });
-
     $("#blur-inc").on("click", function (e) {
         Caman("#canvas", img, function () {
             this.stackBlur(5).render();
+            difuminacion += 10;
         });
     });
-
-    $("#gamma-inc").on("click", function (e) {
-        Caman("#canvas", img, function () {
-            this.gamma(0.1).render();
-        });
-    });
-
-    $("#clip-inc").on("click", function (e) {
-        Caman("#canvas", img, function () {
-            this.clip(10).render();
-        });
-    });
-
+ 
     $("#download-btn").on("click", function (e) {
         var fileExtension = fileName.slice(-4);
         if (fileExtension == ".jpg" || fileExtension == ".png") {
@@ -148,6 +147,7 @@ $(document).ready(function () {
                   canvasejercicio.heigth = imgejercicio.height; 
                   ctxejercicio.drawImage(img, 0, 0, imgejercicio.width, imgejercicio.height);
                   $("#canvasejercicio").removeAttr("data-caman-id");
+                  prepararejercicio();
                 }
             },
             false
@@ -157,12 +157,26 @@ $(document).ready(function () {
 
 //Set Exercise Function // Aplicar Random
 function prepararejercicio() {
-  Caman("#canvasejercicio", imgejercicio, function () {
-    this.brightness(Math.floor((Math.random() * 50) + 10)).render();
-    this.contrast(Math.floor((Math.random() * 50) + 10)).render();  
-  });
-};
+    var valores = [-40,-30,-20,-10,0,10,20,30,40];
+    var valoresespeciales = [0,0,0,0,0,10,0,0,0,0,0];
+    brilloejercicio = valores[Math.floor(Math.random()*(valores.length))];
+    contrasteejercicio = valores[Math.floor(Math.random()*(valores.length))];
+    saturacionejercicio = valores[Math.floor(Math.random()*(valores.length))];
+    exposicionejercicio = valores[Math.floor(Math.random()*(valores.length))];
+    ruidoejercicio = valoresespeciales[Math.floor(Math.random()*(valores.length))];
+    difuminacionejercicio = valoresespeciales[Math.floor(Math.random()*(valores.length))];
+    alert([contrasteejercicio, saturacionejercicio])
+    Caman("#canvasejercicio", imgejercicio ,  function () {
+        this.brightness(brilloejercicio);
+        this.contrast(contrasteejercicio);
+        this.saturation(saturacionejercicio);    
+        this.exposure(exposicionejercicio);
+        this.noise(ruidoejercicio);
+        this.stackBlur(difuminacionejercicio);   
+        this.render();
 
+    });
+};
 //Download Function 
 function download(canvas, filename) {
     var e;
