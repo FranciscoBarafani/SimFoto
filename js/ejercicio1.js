@@ -24,6 +24,8 @@ var ruido = 0;
 var difuminacion = 0; 
 //Ejercicio Elegido , para creacion y correcion
 var elegido = [];
+//Imagen Original para restauracion
+var imgoriginal; 
 
 $(document).ready(function () {
     $("#brightness-inc").on("click", function (e) {
@@ -136,6 +138,8 @@ $(document).ready(function () {
             function () {
                 img = new Image();
                 imgejercicio = new Image();
+                imgoriginal = new Image()
+                imgoriginal.src = reader.result;
                 imgejercicio.src = reader.result;
                 img.src = reader.result;
                 img.onload = function () {
@@ -161,6 +165,7 @@ var ejercicio2 = [-20,20,20,30,0,0];
 var ejercicio3 = [-10,10,-50,0,0,0];
 //Set Exercise Function // Aplicar 
 function prepararejercicio(numero){
+    resetearimagenejercicio();
     brillo = 0;
     contraste = 0;
     saturacion = 0;
@@ -175,9 +180,12 @@ function prepararejercicio(numero){
     {
     elegido = ejercicio2;
     }
-    else
+    else if (numero == 3)
     {
     elegido = ejercicio3; 
+    }
+    else {
+        elegido = prepararejerciciorandom();
     }
     Caman("#canvasejercicio", imgejercicio ,  function () {
     this.brightness(elegido[0]);
@@ -197,6 +205,7 @@ function prepararejerciciorandom() {
     exposicion = 0;
     ruido = 0;
     difuminacion = 0; 
+    var elegido = [];
     var valores = [-40,-30,-20,-10,0,10,20,30,40];
     var valoresespeciales = [0,0,0,0,0,10,0,0,0,0,0];
     brilloejercicio = valores[Math.floor(Math.random()*(valores.length))];
@@ -213,8 +222,9 @@ function prepararejerciciorandom() {
         this.noise(ruidoejercicio);
         this.stackBlur(difuminacionejercicio);   
         this.render();
-
     });
+    elegido = [brilloejercicio,contrasteejercicio,saturacionejercicio,exposicionejercicio,ruidoejercicio,difuminacionejercicio]
+    return elegido;
 };
 //Corroborador de Ejercicio
 function corroborarejercicio(){
@@ -224,32 +234,38 @@ function corroborarejercicio(){
 //Correctores 
 function correctorbrillo(){
     if (elegido[0] == brillo){
-        alert("Brillo correcto! Ahora contraste");
+        document.getElementById("botonbrillo").style.backgroundColor = "green";
     }
+
 };
 function correctorcontraste(){
     if (elegido[1] == contraste){
-        alert("Contraste correcto! Ahora saturacion");
+        document.getElementById("botoncontraste").style.backgroundColor = "green";
     }
 };
 function correctorsaturacion(){
     if (elegido[2] == saturacion){
-        alert("Saturacion correcta! Ahora Exposicion");
+        document.getElementById("botonsaturacion").style.backgroundColor = "green";
     }
 };
 function correctorexposicion(){
     if (elegido[3] == exposicion){
-        alert("Exposicion correcta! Ahora ruido");
+        document.getElementById("botonexposicion").style.backgroundColor = "green";
+        if (elegido[4] == 0 && elegido[5] == 0){
+    document.getElementById("botonruido").style.backgroundColor = "green";
+    document.getElementById("botondifuminacion").style.backgroundColor = "green";
+        }
     }
+    
 };
 function correctorruido(){
     if (elegido[4] == ruido){
-        alert("Ruido correcto! Ahora difuminacion");
+        document.getElementById("botonruido").style.backgroundColor = "green";
     }
 };
 function correctodifuminacion(){
     if (elegido[5] == difuminacion){
-        alert("Difuminacion correcta! Ahora corrobora el ejercicio!");
+        document.getElementById("botondifuminacion").style.backgroundColor = "green";
     }
 };
 //Download Function 
@@ -296,4 +312,16 @@ function reset() {
     exposicion = 0;
     ruido = 0;
     difuminacion = 0; 
+    resetearbotones();
 }; 
+function resetearbotones(){
+    document.getElementById("botonbrillo").style.backgroundColor = "rgb(39, 105, 247)";
+    document.getElementById("botoncontraste").style.backgroundColor = "rgb(39, 105, 247)";
+    document.getElementById("botonsaturacion").style.backgroundColor = "rgb(39, 105, 247)";
+    document.getElementById("botonexposicion").style.backgroundColor = "rgb(39, 105, 247)";
+    document.getElementById("botonruido").style.backgroundColor = "rgb(39, 105, 247)";
+    document.getElementById("botondifuminacion").style.backgroundColor = "rgb(39, 105, 247)";
+};
+function resetearimagenejercicio(){
+    imgejercicio = imgoriginal;
+};

@@ -7,7 +7,7 @@
       <button class="btn btn-primary" onclick="prepararejercicio(1)">Ejercicio 1</button>
       <button class="btn btn-primary" onclick="prepararejercicio(2)">Ejercicio 2</button>
       <button class="btn btn-primary" onclick="prepararejercicio(3)">Ejercicio 3</button>
-      <button class="btn btn-primary" onclick="prepararejerciciorandom()">Ejercicio Aleatorio</button>
+      <button class="btn btn-primary" onclick="prepararejercicio(4)">Ejercicio Aleatorio</button>
       <button class="btn btn-primary" onclick="corroborarejercicio()">Corroborar</button>
     </div>
     <div class="preview-wrapper">
@@ -43,35 +43,35 @@
     <!-- Filtros -->
     <div class="row" style="margin-bottom:15px; margin-left: 5px">
       <div class="col-9">
-        <div class="filter-buttons" style="background-color: white; border-radius: 15px">
+        <div class="filter-buttons" style="background-color: rgba(99, 99, 99, 0.555); border-radius: 15px">
           <div class="filter-group">
             <button id="brightness-dec" onclick="correctorbrillo()">-</button>
-            <span class="filter-name">Brillo</span>
+            <span class="filter-name" id="botonbrillo">Brillo</span>
             <button id="brightness-inc" onclick="correctorbrillo()">+</button>
           </div>
           <div class="filter-group">
             <button id="contrast-dec" onclick="correctorcontraste()">-</button>
-            <span class="filter-name">Contraste</span>
+            <span class="filter-name" id="botoncontraste">Contraste</span>
             <button id="contrast-inc" onclick="correctorcontraste()">+</button>
           </div>
           <div class="filter-group">
             <button id="saturation-dec" onclick="correctorsaturacion()">-</button>
-            <span class="filter-name">Saturacion</span>
+            <span class="filter-name" id="botonsaturacion">Saturacion</span>
             <button id="saturation-inc" onclick="correctorsaturacion()">+</button>
           </div>
           <div class="filter-group">
             <button id="exposure-dec" onclick="correctorexposicion()">-</button>
-            <span class="filter-name">Exposicion</span>
+            <span class="filter-name" id="botonexposicion">Exposicion</span>
             <button id="exposure-inc" onclick="correctorexposicion()">+</button>
           </div>
           <div class="filter-group">
             <button id="noise-dec" class="disabled" onclick="correctorruido()">-</button>
-            <span class="filter-name">Ruido</span>
+            <span class="filter-name" id="botonruido">Ruido</span>
             <button id="noise-inc" onclick="correctorruido()">+</button>
           </div>
           <div class="filter-group">
             <button id="blur-dec" class="disabled" onclick="correctordifuminacion()">-</button>
-            <span class="filter-name">Difuminacion</span>
+            <span class="filter-name" id="botondifuminacion" >Difuminacion</span>
             <button id="blur-inc" onclick="correctordifuminacion()">+</button>
           </div>
         </div>
