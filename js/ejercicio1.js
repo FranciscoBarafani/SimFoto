@@ -147,11 +147,13 @@ $(document).ready(function () {
                     canvas.height = img.height;                  
                     ctx.drawImage(img, 0, 0, img.width, img.height);                
                     $("#canvas").removeAttr("data-caman-id");                  
+                
                 };              
                 imgejercicio.onload = function (){
                   canvasejercicio.width = imgejercicio.width;
-                  canvasejercicio.heigth = 800; 
-                  ctxejercicio.drawImage(img, 0, 0, imgejercicio.width, imgejercicio.height);
+                  canvasejercicio.heigth = imgejercicio.height; 
+                  debugger;
+                  ctxejercicio.drawImage(img, 0, 0, img.width, img.height);
                   $("#canvasejercicio").removeAttr("data-caman-id");
                 }
             },
