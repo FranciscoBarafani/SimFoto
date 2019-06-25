@@ -32,6 +32,7 @@ $(document).ready(function () {
         Caman("#canvas", img, function () {
             this.brightness(10).render();
             brillo += 10;
+            correctorbrillo();
         });
     });
 
@@ -39,6 +40,7 @@ $(document).ready(function () {
         Caman("#canvas", img, function () {
             this.brightness(-10).render();
             brillo -= 10;
+            correctorbrillo();
         });
     });
 
@@ -46,6 +48,7 @@ $(document).ready(function () {
         Caman("#canvas", img, function () {
             this.contrast(10).render();
             contraste += 10;
+            correctorcontraste();
         });
     });
 
@@ -53,6 +56,7 @@ $(document).ready(function () {
         Caman("#canvas", img, function () {
             this.contrast(-10).render();
             contraste -= 10;
+            correctorcontraste();
         });
     });
 
@@ -60,6 +64,7 @@ $(document).ready(function () {
         Caman("#canvas", img, function () {
             this.saturation(10).render();
             saturacion += 10;
+            correctorsaturacion();
         });
     });
 
@@ -67,18 +72,7 @@ $(document).ready(function () {
         Caman("#canvas", img, function () {
             this.saturation(-10).render();
             saturacion -= 10;
-        });
-    });
-
-    $("#vibrance-inc").on("click", function (e) {
-        Caman("#canvas", img, function () {
-            this.vibrance(10).render();
-        });
-    });
-
-    $("#vibrance-dec").on("click", function (e) {
-        Caman("#canvas", img, function () {
-            this.vibrance(-10).render();
+            correctorsaturacion();
         });
     });
 
@@ -86,6 +80,7 @@ $(document).ready(function () {
         Caman("#canvas", img, function () {
             this.exposure(10).render();
             exposicion += 10;
+            correctorsaturacion();
         });
     });
 
@@ -93,6 +88,7 @@ $(document).ready(function () {
         Caman("#canvas", img, function () {
             this.exposure(-10).render();
             exposicion -= 10;
+            correctorexposicion();
         });
     });
 
@@ -100,12 +96,7 @@ $(document).ready(function () {
         Caman("#canvas", img, function () {
             this.noise(10).render();
             ruido += 10;
-        });
-    });
-
-    $("#sharpen-inc").on("click", function (e) {
-        Caman("#canvas", img, function () {
-            this.sharpen(10).render();
+            correctorruido();
         });
     });
 
@@ -113,6 +104,7 @@ $(document).ready(function () {
         Caman("#canvas", img, function () {
             this.stackBlur(5).render();
             difuminacion += 10;
+            correctordifuminacion();
         });
     });
  
@@ -137,36 +129,24 @@ $(document).ready(function () {
             "load",
             function () {
                 img = new Image();
-                imgejercicio = new Image();
-                imgoriginal = new Image()
-                imgoriginal.src = reader.result;
-                imgejercicio.src = reader.result;
                 img.src = reader.result;
                 img.onload = function () {
-                    canvas.width = img.width;                 
-                    canvas.height = img.height;                  
-                    ctx.drawImage(img, 0, 0, img.width, img.height);                
-                    $("#canvas").removeAttr("data-caman-id");                  
-                
-                };              
-                imgejercicio.onload = function (){
-                  canvasejercicio.width = imgejercicio.width;
-                  canvasejercicio.heigth = imgejercicio.height; 
-                  debugger;
-                  ctxejercicio.drawImage(img, 0, 0, img.width, img.height);
-                  $("#canvasejercicio").removeAttr("data-caman-id");
-                }
+                    canvas.width = img.width;
+                    canvasejercicio.width = img.width;                 
+                    canvas.height = img.height;       
+                    canvasejercicio.height = img.height;           
+                    ctx.drawImage(img, 0, 0, img.width, img.height); 
+                    ctxejercicio.drawImage(img, 0, 0, img.width, img.height);  
+                    $("#canvas").removeAttr("data-caman-id");       
+                    $("#canvasejercicio").removeAttr("data-caman-id");       
+                };                         
             },
             false
         );
     });
-});
-//Set de Ejercicios Definidos 
-var ejercicio1 = [10,30,10,-10,0,0];
-var ejercicio2 = [-20,20,20,30,0,0];
-var ejercicio3 = [-10,10,-50,0,0,0];
+})
 //Set Exercise Function // Aplicar 
-function prepararejercicio(numero){
+function prepararejercicio(){
     resetearimagenejercicio();
     brillo = 0;
     contraste = 0;
@@ -174,23 +154,9 @@ function prepararejercicio(numero){
     exposicion = 0;
     ruido = 0;
     difuminacion = 0; 
-    if (numero == 1)
-    {
-    elegido = ejercicio1;
-    }
-    else if (numero == 2)
-    {
-    elegido = ejercicio2;
-    }
-    else if (numero == 3)
-    {
-    elegido = ejercicio3; 
-    }
-    else {
-        elegido = prepararejerciciorandom();
-    }
+    elegido = prepararejerciciorandom();
     Caman("#canvasejercicio", imgejercicio ,  function () {
-    this.brightness(elegido[0]);
+        this.brightness(elegido[0]);
         this.contrast(elegido[1]);
         this.saturation(elegido[2]);    
         this.exposure(elegido[3]);
@@ -208,7 +174,7 @@ function prepararejerciciorandom() {
     ruido = 0;
     difuminacion = 0; 
     var elegido = [];
-    var valores = [-40,-30,-20,-10,0,10,20,30,40];
+    var valores = [-40,-30,-20,-10,10,20,30,40];
     var valoresespeciales = [0,0,0,0,0,10,0,0,0,0,0];
     brilloejercicio = valores[Math.floor(Math.random()*(valores.length))];
     contrasteejercicio = valores[Math.floor(Math.random()*(valores.length))];
@@ -230,45 +196,70 @@ function prepararejerciciorandom() {
 };
 //Corroborador de Ejercicio
 function corroborarejercicio(){
-    if (elegido[0] == brillo && elegido[1] == contraste && elegido[2] == saturacion && elegido[3] == exposicion && elegido[4] == ruido && elegido[5] == difuminacion ) 
+    var input = [brillo,contraste,saturacion,exposicion,ruido,difuminacion];
+    if (input.toString() == elegido.toString()){
     alert("Ejercicio Correcto!!")
+    }
 };
 //Correctores 
 function correctorbrillo(){
     if (elegido[0] == brillo){
         document.getElementById("botonbrillo").style.backgroundColor = "green";
     }
-
+    else
+    {
+        document.getElementById("botonbrillo").style.backgroundColor = "rgb(39, 105, 247)";
+     }
 };
 function correctorcontraste(){
     if (elegido[1] == contraste){
         document.getElementById("botoncontraste").style.backgroundColor = "green";
     }
+    else
+    {
+        document.getElementById("botoncontraste").style.backgroundColor = "rgb(39, 105, 247)";
+     }
 };
 function correctorsaturacion(){
     if (elegido[2] == saturacion){
         document.getElementById("botonsaturacion").style.backgroundColor = "green";
     }
+    else
+    {
+        document.getElementById("botonsaturacion").style.backgroundColor = "rgb(39, 105, 247)";
+    }
 };
 function correctorexposicion(){
     if (elegido[3] == exposicion){
         document.getElementById("botonexposicion").style.backgroundColor = "green";
-        if (elegido[4] == 0 && elegido[5] == 0){
-    document.getElementById("botonruido").style.backgroundColor = "green";
-    document.getElementById("botondifuminacion").style.backgroundColor = "green";
+        if (elegido[4] == 0 && (elegido[5] == 0)){
+        document.getElementById("botonruido").style.backgroundColor = "green";
+        document.getElementById("botondifuminacion").style.backgroundColor = "green";
         }
     }
+    else
+    {
+        document.getElementById("botonexposicion").style.backgroundColor = "rgb(39, 105, 247)";
+     }
     
 };
 function correctorruido(){
     if (elegido[4] == ruido){
         document.getElementById("botonruido").style.backgroundColor = "green";
     }
+    else
+    {
+        document.getElementById("botonruido").style.backgroundColor = "rgb(39, 105, 247)";
+    }
 };
-function correctodifuminacion(){
+function correctordifuminacion(){
     if (elegido[5] == difuminacion){
         document.getElementById("botondifuminacion").style.backgroundColor = "green";
     }
+    else
+    {
+        document.getElementById("botondifuminacion").style.backgroundColor = "rgb(39, 105, 247)";
+     }
 };
 //Download Function 
 function download(canvas, filename) {
